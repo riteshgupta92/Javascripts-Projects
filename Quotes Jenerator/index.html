@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <title>Quotes Jenerator Project</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+        font-family: "Open Sans", "Helvetica Neue", sans-serif;
+        background: url(https://img.freepik.com/premium-photo/blurred-bookshelf-many-old-books-book-shop-library_36051-477.jpg?w=826)
+          no-repeat center center/ cover;
+      }
+      .container {
+        width: 550px;
+        height: 450px;
+      }
+      .header {
+        font-size: 1.1rem;
+        border: 2px solid #fff;
+        color: #fff;
+        padding: 5px;
+        border-radius: 5px;
+        width: 80%;
+        margin: 20px auto;
+        cursor: pointer;
+        background-color: #262626;
+      }
+      .header:hover{
+        color: #7C0A02;
+      }
+      .main-content {
+        width: 100%;
+        height: 320px;
+        background-color: #fff;
+        border-radius: 20px;
+        padding: 50px 50px;
+        box-shadow: 0 0 25px;
+      }
+      .text-area {
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
+      .person {
+        font-size: 1.6rem;
+        color: #aa0000;
+        text-transform: uppercase;
+        margin-top: 20px;
+      }
+      #btn {
+        background-color: #262626;
+        color: #fff;
+        font-size: 1.2rem;
+        padding: 10px 15px;
+        margin-top: 20px;
+        border-radius: 10px;
+        border: 2px solid #262626;
+        cursor: pointer;
+      }
+      #btn:hover {
+        color: #00308f;
+      }
+      #btn:active {
+        background-color: #72a0c1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Javascript Quote Generator</h2>
+      </div>
+      <div class="main-content">
+        <div class="text-area">
+          <span class="quote">
+            Ask not what your country can do for you; ask what you can do for
+            your country.
+          </span>
+        </div>
+        <div class="person">John Kennedy</div>
+        <div class="button-area">
+          <button id="btn">New Quotes</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // key Concept :-
+      // querySelector, addEvent Listners, Math object and innertext.
+      let button = document.querySelector("#btn");
+      let quote = document.querySelector(".quote");
+      let person = document.querySelector(".person");
+
+      const quotes = [
+        {
+          quote:
+            "All the world's a stage, and all the men and women merely players.",
+          person: "William Shakespeare",
+        },
+        {
+          quote: "For those to whom much is given, much is required.",
+          person: "the Bible",
+        },
+        {
+          quote:
+            "Genius is one percent inspiration and ninety-nine percent perspiration.",
+          person: "Thomas Edison",
+        },
+        {
+          quote: "If at first you don't succeed, try, try again.",
+          person: "W. E. Hickson",
+        },
+        {
+          quote:
+            "If you want something said, ask a man; if you want something done, ask a woman.",
+          person: "Margaret Thatcher",
+        },
+      ];
+
+      button.addEventListener('click',function() {
+        let random = Math.floor(Math.random() * quotes.length);
+        quote.innerText = quotes[random].quote;
+        person.innerText = quotes[random].person;
+      })
+    </script>
+  </body>
+</html>

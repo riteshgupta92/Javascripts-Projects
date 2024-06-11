@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Watch</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url(https://img.freepik.com/free-photo/sunset-majestic-coastal-cliff-waves-breaking-generative-ai_188544-12582.jpg?w=826&t=st=1711106639~exp=1711107239~hmac=d8ecf8696bc96f46302ca3287c48447899ecdbf0b8eda3ab7569311c80337f53) no-repeat center center/cover;
+        height: 100vh;
+    }
+
+    .container {
+        display: flex;
+        border: 2px solid #fff;
+        width: 25%;
+        height: 10%;
+        border-radius: 10px;
+        padding: 20px;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        box-shadow: 0 0 30px;
+        
+    }
+
+    #timer {
+        position: absolute;
+        left: 20px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .button {
+        margin-left: 90px;
+        border-radius: 10px;
+    }
+
+    .btn {
+        padding: 5px 10px;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    #startBtn {
+        background-color: #008200;
+        color: #fff;
+        border: #008200;
+    }
+
+    #stopBtn {
+        margin-left: 5px;
+        background-color: #EF0107;
+        color: #fff;
+        border: #EF0107;
+    }
+
+    #resetBtn {
+        margin-left: 5px;
+        background-color: #262626;
+        color: #fff;
+        border: #262626;
+        ;
+    }
+
+    #startBtn:active {
+        background-color: lightgreen;
+    }
+
+    #stopBtn:active {
+        background-color: lightcoral;
+    }
+
+    #resetBtn:active {
+        background-color: #414a4c;
+    }
+    @media (max-width: 768px) {
+    .container {
+        width: 80%;
+    }
+}
+</style>
+
+<body>
+    <div class="container">
+        <div id="timer">
+            00:00:00
+        </div>
+        <div class="button">
+            <button id="startBtn" class="btn">Start</button>
+            <button id="stopBtn" class="btn">Stop</button>
+            <button id="resetBtn" class="btn">Reset</button>
+        </div>
+
+    </div>
+
+</body>
+<script>
+    let startButton = document.getElementById('startBtn');
+    let stopButton = document.getElementById('stopBtn');
+    let resetButton = document.getElementById('resetBtn');
+
+
+    // variable for times:-
+    let second = 0;
+    let minute = 0;
+    let hours = 0;
+
+    // variables for leading Zero:-
+    let leadingSeconds = 0;
+    let leadingMinutes = 0;
+    let leadingHours = 0;
+
+    let intervalId = null;
+
+    function updateTimer() {
+        second++
+
+        if (second / 60 === 1) {
+            second = 0;
+            minute++;
+            if (minute / 60 === 1) {
+                minute = 0;
+                hours++;
+            }
+        }
+        if(second < 10) {
+            leadingSeconds = "0" + second.toString();
+        }else{
+            leadingSeconds = second;
+        }
+        if(minute < 10) {
+            leadingMinutes = "0" + minute.toString();
+        }else{
+            leadingMinutes = minute;
+        }
+        if(hours < 10) {
+            leadingHours = "0" + hours.toString();
+        }else{
+            leadingHours = hours;
+        }
+
+        displayTimer = document.getElementById('timer').innerText =
+        leadingHours + ":" + leadingMinutes + ":" + leadingSeconds;
+    }
+     
+
+     startButton.addEventListener('click', function(){
+        if(!intervalId){
+            interval = window.setInterval(updateTimer, 1000)
+        }
+     });
+
+     stopButton.addEventListener('click', function() {
+        if (intervalId) {
+            window.clearInterval(intervalId);
+            intervalId = null;
+        }
+    });
+
+    resetButton.addEventListener('click', function() {
+        if (intervalId) {
+            window.clearInterval(intervalId);
+            intervalId = null;
+        }
+        second = 0;
+        minute = 0;
+        hours = 0;
+        document.getElementById('timer').innerText = "00:00:00";
+    });
+
+    
+
+</script>
+
+</html

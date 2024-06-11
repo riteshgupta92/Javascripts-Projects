@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+.hero {
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(45deg, blue, black);
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 180px;
+}
+.clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(45deg, #1ABC9C,#138D75);
+  border-radius: 10px;
+}
+.clock span {
+  display: inline-block;
+  font-size: 80px;
+  text-align: center;
+  width: 120px;
+  position: relative;
+}
+.clock #hrs::after{
+    content: 'HOURS';
+    font-size: 18px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.clock #min::after{
+    content: 'MINUTES';
+    font-size: 18px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.clock #sec::after{
+    content: 'SECONDS';
+    font-size: 18px;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%);
+}
+h1{
+    text-align: center;
+    color: #1ABC9C;
+}
+.btn-group{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 5px;
+}
+.btn-group button{
+  width: 80px;
+  height: 35px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #262626;
+  color: #ffff;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #262626;
+}
+.btn-group button:active{
+  background-color: black;
+}
